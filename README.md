@@ -7,6 +7,121 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+API Documentation:
+
+User Onboarding:
+1. User registration: http://127.0.0.1:8000/api/register (Post)
+Request=>{
+  "name": "",
+  "email": "",
+  "password": ""
+}
+Response=>{
+  "success": true,
+  "message": "Account created.",
+  "data": {
+    "user": { "user details" },
+    "token": ""
+  }
+}
+2. User Login: http://127.0.0.1:8000/api/login (Post)
+Request=>{
+  "email": "",
+  "password": ""
+}
+Response=>{
+  "success": true,
+  "message": "Logged In",
+  "data": {
+    "user": { "user details" },
+    "token": ""
+  }
+}
+3.  User Logout: http://127.0.0.1:8000/api/logout (Post)
+Request=>{token}
+Response=>{ "success": true, "message": "Logged out." }
+
+Poll:
+4. Create poll: http://127.0.0.1:8000/api/polls (Post)
+Request=>{
+    "title":"Presidential Vote",
+    "description":"Vote for your 2027 president",
+    "expires_at": "2026-09-28 12:00:00",
+    "options":[
+        "Tinubu", "Obi" ,"Makinde" , "Atiku" , "Abiola"
+    ]
+}
+Response=>{
+  "success": true,
+  "message": "Poll created.",
+  "data": {
+    "id": 1,
+    "title": "Presidential Vote",
+    "description": "Vote for your 2027 president",
+    "slug": "k3x9a2mq",
+    "share_url": "http://127.0.0.1:8000/api/polls/k3x9a2mq",
+    "expires_at": "",
+    "created_at": "",
+    "options": [
+      { "id": 1, "text": "Tinubu" },
+      { "id": 2, "text": "Obi" },
+      { "id": 3, "text": "Makinde" },
+      { "id": 4, "text": "Atiku" },
+      {"id": 5, "text": "Abiola" }
+    ]
+  }
+}
+
+Votes:
+5. Voting http://127.0.0.1:8000/api/polls/{slug}/vote (Post)
+Request=>{
+"poll_option_id": 
+}
+Response=>{
+  "success": true,
+  "message": "Poll retrieved.",
+  "data": {
+    "id": 1,
+    "title": "",
+    "description": "",
+    "slug": {slug},
+    "expires_at": "",
+    "is_expired": false,
+    "status": "open",
+    "seconds_remaining": ,
+    "total_votes": ,
+    "options": [
+      { "id": 1, "text": "", "votes": , "percentage":  },
+      { "id": 2, "text": "", "votes": , "percentage":  },
+    ]
+  }
+}
+6. Checking vote: http://127.0.0.1:8000/api/polls/{slug}
+Request=>{}
+Response=>{"success": true,
+  "message": "Poll retrieved.",
+  "data": {
+    "id": 1,
+    "title": "",
+    "description": "",
+    "slug": {slug},
+    "expires_at": "",
+    "is_expired": false,
+    "status": "open",
+    "seconds_remaining": ,
+    "total_votes": ,
+    "options": [
+      { "id": 1, "text": "", "votes": , "percentage":  },
+      { "id": 2, "text": "", "votes": , "percentage":  },
+    ]
+  }
+}
+7. Live stream: http://127.0.0.1:8000/api/polls/{slug}/stream
+Request=>{}
+Response=>{Vote details}
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
