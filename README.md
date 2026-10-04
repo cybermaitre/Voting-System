@@ -42,7 +42,7 @@ Request=>{token}
 Response=>{ "success": true, "message": "Logged out." }
 
 Poll:
-4. Create poll: http://127.0.0.1:8000/api/polls (Post)
+4.  Create poll: http://127.0.0.1:8000/api/polls (Post)
 Request=>{
     "title":"Presidential Vote",
     "description":"Vote for your 2027 president",
